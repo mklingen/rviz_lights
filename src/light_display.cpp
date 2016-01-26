@@ -56,10 +56,6 @@ namespace rviz_lights
                 Ogre::Vector3(0, 0, -1),
                 "The direction of the light", this, SLOT(updateLight()));
 
-        ambientColorProperty = new rviz::ColorProperty("Ambient Color",
-                QColor(255, 255, 255),
-                "The diffuse color of the light", this, SLOT(updateLight()));
-
     	diffuseColorProperty = new rviz::ColorProperty("Diffuse Color",
     	        QColor(255, 255, 255),
     	        "The diffuse color of the light", this, SLOT(updateLight()));
@@ -67,8 +63,6 @@ namespace rviz_lights
         specularColorProperty = new rviz::ColorProperty("Specular Color",
                 QColor(50, 50, 50),
                 "The specular color of the light", this, SLOT(updateLight()));
-
-        destroyProperty = new rviz::BoolProperty("Destroy All Lights", false, "When this is clicked, ALL lights except this one will be destroyed.", this, SLOT(destroyLights()));
 
     	updateLight();
 
@@ -113,8 +107,6 @@ namespace rviz_lights
         light->setDiffuseColour(diffuse.redF(), diffuse.greenF(), diffuse.blueF());
         QColor specular = specularColorProperty->getColor();
         light->setSpecularColour(specular.redF(), specular.greenF(), specular.blueF());
-        QColor ambient = ambientColorProperty->getColor();
-        scene_manager_->setAmbientLight(Ogre::ColourValue(ambient.redF(), ambient.greenF(), ambient.blueF(), 1.0f));
     }
 
     // Clear the visuals by deleting their objects.

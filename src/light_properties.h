@@ -18,18 +18,17 @@ namespace Ogre
 namespace rviz_lights
 {
 
-    class LightDisplay: public rviz::Display
+    class LightProperties: public rviz::Display
     {
             Q_OBJECT
         public:
             // Constructor.  pluginlib::ClassLoader creates instances by calling
             // the default constructor, so make sure you have one.
-            LightDisplay();
-            virtual ~LightDisplay();
+            LightProperties();
+            virtual ~LightProperties();
 
             private Q_SLOTS:
                 void updateLight();
-                void destroyLights();
             // Overrides of protected virtual functions from Display.  As much
             // as possible, when Displays are not enabled, they should not be
             // subscribed to incoming data and should not show anything in the
@@ -44,12 +43,11 @@ namespace rviz_lights
             virtual void onEnable();
             virtual void onDisable();
 
-            rviz::ColorProperty* diffuseColorProperty;
-            rviz::ColorProperty* specularColorProperty;
-            rviz::VectorProperty* positionProperty;
-            rviz::VectorProperty* directionProperty;
-            rviz::EnumProperty* typeProperty;
-            Ogre::Light* light;
+            ::rviz::BoolProperty *property_shadows_;
+            ::rviz::BoolProperty *property_cameralight_;
+            ::rviz::BoolProperty *property_keylight_;
+            ::rviz::BoolProperty *property_filllight_;
+            ::rviz::BoolProperty *property_backlight_;
 
     };
 } // end namespace mesh2_plugin

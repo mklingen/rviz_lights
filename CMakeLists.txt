@@ -21,12 +21,14 @@ add_definitions(-DQT_NO_KEYWORDS)
 ## Qt's meta-object compiler.
 qt4_wrap_cpp(MOC_FILES
   src/light_display.h
+  src/light_properties.h
 )
 
 ## Here we specify the list of source files, including the output of
 ## the previous command which is stored in ``${MOC_FILES}``.
 set(SOURCE_FILES
   src/light_display.cpp
+  src/light_properties.cpp
   ${MOC_FILES}
 )
 
